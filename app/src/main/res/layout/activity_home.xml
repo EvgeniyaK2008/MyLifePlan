@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:padding="20dp"
+    tools:context=".HomeActivity">
+
+    <!-- Кнопка профиля (аватарка кликабельна, переход в профиль) -->
+    <ImageButton
+        android:id="@+id/btn_profile"
+        android:layout_width="70dp"
+        android:layout_height="68dp"
+        android:background="@drawable/bg_circle"
+        android:padding="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/_323604258680673439__1_"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Welcome home"
+        android:textColor="@color/title_blue"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_profile"
+        app:layout_constraintStart_toEndOf="@id/btn_profile"
+        app:layout_constraintTop_toTopOf="@id/btn_profile" />
+
+    <!-- Иконка меню -->
+    <ImageView
+        android:id="@+id/menu_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_profile" />
+
+    <!-- Карточка Plans -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/plans_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="12dp"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toStartOf="@id/motivation_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_profile"
+        app:layout_constraintWidth_percent="0.55">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Plans"
+                android:textColor="@color/text_muted"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/plans_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="8"
+                tools:listitem="@layout/item_plan" />
+
+            <TextView
+                android:id="@+id/add_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:padding="4dp"
+                android:text="+ add"
+                android:textColor="@color/title_blue" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Карточка Motivation -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/motivation_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/plans_card"
+        app:layout_constraintTop_toBottomOf="@id/btn_profile">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Motivation for you"
+                android:textColor="@color/text_muted"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/motivation_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Be kind to yourself"
+                android:textColor="@color/text_light_gray"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Пустая карточка под Motivation -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/empty_card"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="@id/motivation_card"
+        app:layout_constraintStart_toStartOf="@id/motivation_card"
+        app:layout_constraintTop_toBottomOf="@id/motivation_card" />
+
+    <!-- Барьер: нижняя карточка стартует под самой длинной колонкой -->
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/columns_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="plans_card,empty_card" />
+
+    <!-- Большая карточка с сеткой навигационных кнопок -->
+     <androidx.cardview.widget.CardView
+        android:id="@+id/grid_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/columns_barrier">
+
+        <GridLayout
+            android:id="@+id/apps_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alignmentMode="alignMargins"
+            android:columnCount="4"
+            android:padding="16dp"
+            android:rowCount="3">
+
+            <!-- 12 кнопок разделов. Каждая — отдельный экран/раздел приложения -->
+            <ImageButton
+                android:id="@+id/btn_section_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_7"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_8"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_9"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_10"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_11"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+            <ImageButton
+                android:id="@+id/btn_section_12"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="6dp"
+                android:layout_rowWeight="1"
+                android:background="@drawable/bg_grid_square"
+                android:padding="16dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/btn_star" />
+
+        </GridLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

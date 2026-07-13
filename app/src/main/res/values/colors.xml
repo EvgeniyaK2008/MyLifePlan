@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_white">#FFFFFF</color>
+    <color name="card_bg">#E8EEF2</color>
+    <color name="card_bg_darker">#D9E4EA</color>
+    <color name="title_blue">#AFCBD6</color>
+    <color name="text_muted">#8FA8B2</color>
+    <color name="text_light_gray">#B0B0B0</color>
+    <color name="avatar_bg">#C7DCE3</color>
+    <color name="stripe_color">#E9EFF2</color>
+</resources>
