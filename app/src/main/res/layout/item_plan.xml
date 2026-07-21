@@ -1,26 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingTop="6dp"
-    android:paddingBottom="6dp">
+    android:layout_marginBottom="6dp"
+    android:gravity="center_vertical">
 
+    <!-- Время -->
     <TextView
-        android:id="@+id/plan_time"
-        android:layout_width="56dp"
+        android:id="@+id/tv_time"
+        android:layout_width="52dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_pill"
+        android:gravity="center"
+        android:paddingVertical="5dp"
         android:text="7:00"
-        android:textColor="@color/text_muted"
-        android:textSize="15sp" />
+        android:textColor="#8A9BA8"
+        android:textSize="12sp" />
 
+    <!-- Текст задачи -->
     <TextView
-        android:id="@+id/plan_label"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_task"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/bg_pill"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
         android:text="wake up"
-        android:textColor="@color/text_muted"
-        android:textSize="15sp" />
+        android:textColor="#8A9BA8"
+        android:textSize="12sp"
+        android:singleLine="true" />
+
+    <!-- Кнопка удаления элемента -->
+    <ImageButton
+        android:id="@+id/btn_delete_plan"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Удалить"
+        android:scaleType="centerInside"
+        android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
 </LinearLayout>

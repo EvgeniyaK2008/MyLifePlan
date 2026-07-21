@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">MyLifePlan</string>
+    <string name="app_name">My App</string>
+    <string name="welcome_home">Welcome home</string>
+    <string name="plans_title">Plans</string>
+    <string name="add_btn_text">+ add</string>
+    <string name="motivation_title">Motivation for you</string>
+    <string name="motivation_be_kind">Be kind to yourself</string>
+
+    <!-- Описания для людей с ограниченными возможностями (Accessibility) -->
+    <string name="desc_profile_avatar">Profile avatar</string>
+    <string name="desc_menu">Menu navigation</string>
+    <string name="desc_grid_button">Navigation item</string>
 </resources>

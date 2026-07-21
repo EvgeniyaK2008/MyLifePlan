@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:padding="20dp"
+    tools:context=".StudyActivity">
+
+    <!-- Кнопка назад -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Назад"
+        android:src="@android:drawable/ic_menu_revert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Заголовок страницы -->
+    <TextView
+        android:id="@+id/study_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Study Room"
+        android:textColor="#9BB0C1"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <!-- Счетчик монет (справа сверху, смайлик заменен на вашу иконку) -->
+    <LinearLayout
+        android:id="@+id/coins_container"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_button_white"
+        android:elevation="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_back">
+
+        <!-- Ваша иконка звездной монеты -->
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/star_coin_ico" />
+
+        <TextView
+            android:id="@+id/tv_coins_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00"
+            android:textColor="#8A9BA8"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Карточка 1: Горизонтальный Календарь -->
+    <FrameLayout
+        android:id="@+id/calendar_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_home_card"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_calendar_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="July 2026"
+                android:textColor="#8A9BA8"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Строка дней недели -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <!-- Пн -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mo" android:textColor="#8A9BA8" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="17" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Вт -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tu" android:textColor="#8A9BA8" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="18" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Ср -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="We" android:textColor="#8A9BA8" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="19" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Чт (Выделенный/Текущий день) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Th" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:text="20"
+                        android:textColor="#8A9BA8"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="@drawable/bg_selected_day"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Пт -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fr" android:textColor="#8A9BA8" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="21" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Сб -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sa" android:textColor="#8A9BA8" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Вс -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Su" android:textColor="#8A9BA8" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Карточка 2: Таймер Помодоро -->
+    <FrameLayout
+        android:id="@+id/pomodoro_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_grid_card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendar_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pomodoro Timer"
+                android:textColor="#8A9BA8"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Текст Таймера -->
+            <TextView
+                android:id="@+id/tv_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="30:00"
+                android:textColor="#FFFFFF"
+                android:textSize="64sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground" />
+
+            <!-- Полоса прогресса таймера (Настроена под 1800 секунд = 30 минут) -->
+            <ProgressBar
+                android:id="@+id/pb_timer"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="32dp"
+                android:max="1800"
+                android:progress="1800"
+                android:progressDrawable="@drawable/bg_progress_bar" />
+
+            <!-- Условия начисления монет (подсказка, смайлик заменен на символ звездочки) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="30 min = 0.5 ⭐ | 1 hour = 1.0 ⭐"
+                android:textColor="#8A9BA8"
+                android:textSize="13sp" />
+
+            <!-- Кнопки управления (Размер уменьшен до 64dp, добавлено масштабирование) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Кнопка Старт/Пауза (Размер уменьшен до 64dp) -->
+                <ImageButton
+                    android:id="@+id/btn_start_pause"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Старт/Пауза"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/start" />
+
+
+                <ImageButton
+                    android:id="@+id/btn_reset"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="24dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Сброс"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/reset" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
