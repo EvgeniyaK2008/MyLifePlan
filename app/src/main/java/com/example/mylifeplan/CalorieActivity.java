@@ -290,7 +290,7 @@ public class CalorieActivity extends AppCompatActivity {
             }
         }
 
-        // Настраиваем ползунок под загруженные параметры
+        // Настраиваем ползунок
         if (!etHeight.getText().toString().isEmpty()) {
             setupCalorieSeekBar();
         }
