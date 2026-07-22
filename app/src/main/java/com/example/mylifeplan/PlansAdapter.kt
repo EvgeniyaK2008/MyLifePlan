@@ -7,10 +7,9 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-
 class PlansAdapter(
     private val plansList: MutableList<PlanItem>,
-    private val onDeleteClick: (Int) -> Unit // Лямбда-функция для обработки удаления
+    private val onDeleteClick: (Int) -> Unit // Принимает функцию удаления
 ) : RecyclerView.Adapter<PlansAdapter.PlanViewHolder>() {
 
     class PlanViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,7 +29,7 @@ class PlansAdapter(
         holder.tvTime.text = item.time
         holder.tvTask.text = item.task
 
-        // Обработка нажатия на крестик удаления
+        // Обработка удаления
         holder.btnDelete.setOnClickListener {
             onDeleteClick(holder.adapterPosition)
         }

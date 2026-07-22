@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:padding="20dp"
+    tools:context=".RoomBoxActivity">
+
+    <!-- Кнопка Назад -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Назад"
+        android:src="@android:drawable/ic_menu_revert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Заголовок страницы -->
+    <TextView
+        android:id="@+id/room_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kitten's Room"
+        android:textColor="#9BB0C1"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <!-- Звездный Баланс -->
+    <LinearLayout
+        android:id="@+id/coins_container"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_button_white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_back">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/star_coin_ico" />
+
+        <TextView
+            android:id="@+id/tv_coins_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00"
+            android:textColor="#8A9BA8"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- ИГРОВОЙ РУМБОКС (Карточка 300dp высотой) -->
+    <FrameLayout
+        android:id="@+id/room_card"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_grid_card"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
+
+        <!-- Вложенный ConstraintLayout для точного позиционирования слоев мебели -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Слой 1: Пустая комната (Стены и Пол) -->
+            <ImageView
+                android:id="@+id/iv_room_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/room" /> <!-- Ваша картинка пустого румбокса -->
+
+            <!-- Слой 2: Окно (Вверху справа) -->
+            <ImageView
+                android:id="@+id/iv_item_window"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:src="@drawable/window"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <!-- Слой 3: Картина на стене (Вверху слева) -->
+            <ImageView
+                android:id="@+id/iv_item_painting"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:src="@drawable/picture_frame"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <!-- Слой 4: Коврик (Внизу по центру) -->
+            <ImageView
+                android:id="@+id/iv_item_rug"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/round_rug"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible" />
+
+            <!-- Слой 5: Стол со стулом (Слева внизу) -->
+            <ImageView
+                android:id="@+id/iv_item_desk"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/desk"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible" />
+
+            <!-- Слой 6: Ваш нежно-голубой котенок (По центру, поверх коврика) -->
+            <ImageView
+                android:id="@+id/iv_room_pet"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/cat"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <!-- МАГАЗИН МЕБЕЛИ (Нижняя карточка) -->
+    <FrameLayout
+        android:id="@+id/shop_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_home_card"
+        app:layout_constraintTop_toBottomOf="@id/room_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Магазин декора"
+                android:textColor="#8A9BA8"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Горизонтальная прокрутка товаров -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Товар 1: Коврик -->
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="16dp">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/round_rug" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Уютный коврик"
+                            android:textColor="#8A9BA8"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp" />
+                        <TextView
+                            android:id="@+id/btn_buy_rug"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/bg_pill"
+                            android:gravity="center"
+                            android:paddingVertical="4dp"
+                            android:text="15 ⭐"
+                            android:textColor="#9BB0C1"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:focusable="true"/>
+                    </LinearLayout>
+
+                    <!-- Товар 2: Картина -->
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="16dp">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/picture_frame" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Милая картина"
+                            android:textColor="#8A9BA8"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp" />
+                        <TextView
+                            android:id="@+id/btn_buy_painting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/bg_pill"
+                            android:gravity="center"
+                            android:paddingVertical="4dp"
+                            android:text="20 ⭐"
+                            android:textColor="#9BB0C1"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:focusable="true"/>
+                    </LinearLayout>
+
+                    <!-- Товар 3: Стол -->
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="16dp">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/desk" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Рабочий стол"
+                            android:textColor="#8A9BA8"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp" />
+                        <TextView
+                            android:id="@+id/btn_buy_desk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/bg_pill"
+                            android:gravity="center"
+                            android:paddingVertical="4dp"
+                            android:text="30 ⭐"
+                            android:textColor="#9BB0C1"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:focusable="true"/>
+                    </LinearLayout>
+
+                    <!-- Товар 4: Окно -->
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/window" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Светлое окно"
+                            android:textColor="#8A9BA8"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp" />
+                        <TextView
+                            android:id="@+id/btn_buy_window"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/bg_pill"
+                            android:gravity="center"
+                            android:paddingVertical="4dp"
+                            android:text="40 ⭐"
+                            android:textColor="#9BB0C1"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:focusable="true"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

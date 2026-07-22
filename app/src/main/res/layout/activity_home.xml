@@ -190,7 +190,7 @@
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/motivation" /> <!-- Спящий котенок -->
+                android:src="@drawable/cat_sleep" /> <!-- Спящий котенок -->
 
             <!-- Статус питомца -->
             <TextView

@@ -21,52 +21,69 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rvPlans: RecyclerView
     private lateinit var plansAdapter: PlansAdapter
     private val plansList = mutableListOf<PlanItem>()
-    private lateinit var tvMainCoins: TextView // Поле для отображения монет
+
+    // Элементы верхней панели
+    private lateinit var tvMainCoins: TextView
+
+    // Элементы интерактива с котенком
+    private lateinit var ivPet: ImageView
+    private lateinit var tvPetStatus: TextView
+    private lateinit var btnFeedPet: TextView
+    private var isPetFed: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // Инициализация виджета монет
+        // Связываем элементы верхней панели
         tvMainCoins = findViewById(R.id.tv_main_coins)
+
+        // Связываем элементы домика котенка
+        ivPet = findViewById(R.id.iv_pet)
+        tvPetStatus = findViewById(R.id.tv_pet_status)
+        btnFeedPet = findViewById(R.id.btn_feed_pet)
 
         // 1. Инициализация RecyclerView списка
         setupRecyclerView()
 
-        // 2. Загрузка сохраненного списка планов при старте приложения
+        // 2. Загрузка сохраненных планов и состояния котенка
         loadSavedData()
 
-        // 3. Кнопка профиля (аватарка)
+        // 3. Обработчик для кормления питомца
+        btnFeedPet.setOnClickListener {
+            feedKitten()
+        }
+
+        // 4. Кнопка профиля (аватарка)
         val btnProfile = findViewById<ImageButton>(R.id.btn_profile)
         btnProfile?.setOnClickListener {
             Toast.makeText(this, "Открытие профиля", Toast.LENGTH_SHORT).show()
         }
 
-        // 4. Иконка меню
+        // 5. Иконка меню
         val btnMenu = findViewById<ImageView>(R.id.menu_icon)
         btnMenu?.setOnClickListener {
             Toast.makeText(this, "Открытие меню", Toast.LENGTH_SHORT).show()
         }
 
-        // 5. Кнопка добавления нового плана (интерактивный ввод)
+        // 6. Кнопка добавления нового плана
         val btnAddPlan = findViewById<TextView>(R.id.add_btn)
         btnAddPlan?.setOnClickListener {
-            showAddPlanDialog() // Запуск встроенного выбора времени и ввода задачи
+            showAddPlanDialog()
         }
 
-        // 6. Инициализация 8 кнопок разделов
+        // 7. Инициализация 8 кнопок разделов
         setupGridButtons()
     }
 
     /**
-     * Срабатывает автоматически каждый раз, когда мы возвращаемся на этот экран
-     * (например, после завершения таймера Помодоро на экране Учебы)
+     * Вызывается каждый раз, когда мы возвращаемся на главный экран (например, после учебы)
      */
     override fun onResume() {
         super.onResume()
-        // Считываем обновленный баланс монет и мгновенно выводим на экран
+        // Мгновенно обновляем баланс монет
         val prefs = getSharedPreferences("MyLifePlanPrefs", Context.MODE_PRIVATE)
-        val coins = prefs.getFloat("coins", 0.0f)
+        val coins = prefs.getFloat("coins", 100.0f)
         tvMainCoins.text = String.format(Locale.US, "%.2f", coins)
     }
 
@@ -87,18 +104,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Показывает встроенные часы (TimePickerDialog) для выбора времени
+     * Встроенные часы (TimePickerDialog) для выбора времени
      */
     private fun showAddPlanDialog() {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
 
-        // 1. Встроенный диалог выбора времени
         val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
             val formattedTime = String.format(Locale.getDefault(), "%02d:%02d", selectedHour, selectedMinute)
-
-            // 2. После успешного выбора времени запрашиваем текст задачи
             showTaskInputDialog(formattedTime)
         }, hour, minute, true)
 
@@ -106,13 +120,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Показывает диалог ввода названия задачи для выбранного времени
+     * Диалог ввода названия задачи
      */
     private fun showTaskInputDialog(selectedTime: String) {
         val inputEditText = EditText(this)
         inputEditText.hint = "Например, lunch..."
-
-        // Настраиваем внутренний отступ для поля ввода в диалоге
         inputEditText.setPadding(50, 40, 50, 40)
 
         val dialog = AlertDialog.Builder(this)
@@ -141,25 +153,79 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Метод сохранения списка планов в память устройства в виде строки
+     * Метод интерактивного взаимодействия с питомцем за звезды
+     */
+    private fun feedKitten() {
+        val prefs = getSharedPreferences("MyLifePlanPrefs", Context.MODE_PRIVATE)
+        var coins = prefs.getFloat("coins", 100.0f)
+
+        if (isPetFed) {
+            // Если питомец уже сыт, укладываем его спать обратно
+            isPetFed = false
+            prefs.edit().putBoolean("is_pet_fed", false).commit()
+            updatePetVisualState()
+            Toast.makeText(this, "Котёнок сладко потянулся и уснул... 💤", Toast.LENGTH_SHORT).show()
+        } else {
+            // Если голоден, проверяем баланс монет
+            if (coins >= 10.0f) {
+                coins -= 10.0f
+                isPetFed = true
+
+                // Записываем новые значения в память устройства
+                prefs.edit().apply {
+                    putFloat("coins", coins)
+                    putBoolean("is_pet_fed", true)
+                }.commit()
+
+                // Обновляем визуальный интерфейс
+                tvMainCoins.text = String.format(Locale.US, "%.2f", coins)
+                updatePetVisualState()
+                Toast.makeText(this, "Вы покормили котенка! Мяу! 🐾⭐", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Недостаточно звёзд! Требуется как минимум 10.00 ⭐", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    /**
+     * Обновляет изображение и надписи котенка в зависимости от его сытости
+     */
+    private fun updatePetVisualState() {
+        if (isPetFed) {
+            ivPet.setImageResource(R.drawable.cat_happy) // Картинка довольного котенка
+            tvPetStatus.text = "Котёнок сыт и мурчит! 🐾"
+            btnFeedPet.text = "Спит (Разбудить за 10 ⭐)"
+        } else {
+            ivPet.setImageResource(R.drawable.cat_sleep) // Картинка спящего котенка
+            tvPetStatus.text = "Котёнок спит... 💤"
+            btnFeedPet.text = "Покормить (10 ⭐)"
+        }
+    }
+
+    /**
+     * Метод сохранения списка планов
      */
     private fun savePlansData() {
         val prefs = getSharedPreferences("MyLifePlanPrefs", Context.MODE_PRIVATE)
         val serialized = plansList.joinToString(";") { "${it.time}|${it.task}" }
-        prefs.edit().putString("saved_plans", serialized).commit() // commit() мгновенно записывает изменения в память
+        prefs.edit().putString("saved_plans", serialized).commit()
     }
 
     /**
-     * Метод загрузки монет и списка планов при запуске приложения
+     * Метод загрузки всех сохраненных данных
      */
     private fun loadSavedData() {
         val prefs = getSharedPreferences("MyLifePlanPrefs", Context.MODE_PRIVATE)
 
-        // Загрузка монет
-        val coins = prefs.getFloat("coins", 0.0f)
+        // Считываем монеты
+        val coins = prefs.getFloat("coins", 100.0f)
         tvMainCoins.text = String.format(Locale.US, "%.2f", coins)
 
-        // Загрузка планов
+        // Восстанавливаем состояние сытости котенка
+        isPetFed = prefs.getBoolean("is_pet_fed", false)
+        updatePetVisualState()
+
+        // Считываем список планов
         val savedString = prefs.getString("saved_plans", null)
         plansList.clear()
         if (!savedString.isNullOrEmpty()) {
@@ -170,7 +236,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         } else {
-            // Если проект запускается впервые и сохранения нет, показываем стартовые задачи
             plansList.add(PlanItem("07:00", "wake up"))
             plansList.add(PlanItem("07:05", "work out"))
             plansList.add(PlanItem("07:15", "breakfast"))
@@ -193,38 +258,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Индивидуальный переход для каждой из 8 кнопок
-     */
     private fun onSectionClicked(sectionNumber: Int) {
         when (sectionNumber) {
             1 -> {
-                // Раздел 1: Учеба (StudyActivity)
                 val intent = Intent(this, StudyActivity::class.java)
                 startActivity(intent)
             }
             2 -> {
-                // Плитка 2: Калории (CalorieActivity)
                 val intent = Intent(this, CalorieActivity::class.java)
                 startActivity(intent)
             }
             3 -> {
-                Toast.makeText(this, "Открытие Раздела 3", Toast.LENGTH_SHORT).show()
+                // Раздел 3: Румбокс котенка (RoomBoxActivity)
+                val intent = Intent(this, RoomBoxActivity::class.java)
+                startActivity(intent)
             }
-            4 -> {
-                Toast.makeText(this, "Открытие Раздела 4", Toast.LENGTH_SHORT).show()
-            }
-            5 -> {
-                Toast.makeText(this, "Открытие Раздела 5", Toast.LENGTH_SHORT).show()
-            }
-            6 -> {
-                Toast.makeText(this, "Открытие Раздела 6", Toast.LENGTH_SHORT).show()
-            }
-            7 -> {
-                Toast.makeText(this, "Открытие Раздела 7", Toast.LENGTH_SHORT).show()
-            }
-            8 -> {
-                Toast.makeText(this, "Открытие Раздела 8", Toast.LENGTH_SHORT).show()
+            else -> {
+                Toast.makeText(this, "Открытие Раздела $sectionNumber", Toast.LENGTH_SHORT).show()
             }
         }
     }

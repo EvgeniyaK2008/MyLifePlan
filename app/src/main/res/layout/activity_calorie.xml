@@ -40,7 +40,7 @@
             app:layout_constraintTop_toTopOf="@id/btn_back" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Прокручиваемый контент (чтобы элементы не перекрывали друг друга на маленьких экранах) -->
+    <!-- Прокручиваемый контент -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -104,7 +104,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <!-- Круговой прогресс-бар -->
                     <ProgressBar
                         android:id="@+id/calorie_progress_bar"
                         style="?android:attr/progressBarStyleHorizontal"
@@ -118,7 +117,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!-- Текст в центре круга -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -155,7 +153,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>
 
-            <!-- Карта 3: Поля ввода параметров (Рост, Вес, Возраст) -->
+            <!-- Карта 3: Поля ввода параметров и Слайдер целей -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,7 +181,6 @@
                         android:orientation="horizontal"
                         android:weightSum="3">
 
-                        <!-- Рост -->
                         <EditText
                             android:id="@+id/et_height"
                             android:layout_width="0dp"
@@ -198,7 +195,6 @@
                             android:textColorHint="#BFCFD9"
                             android:textSize="13sp" />
 
-                        <!-- Вес -->
                         <EditText
                             android:id="@+id/et_weight"
                             android:layout_width="0dp"
@@ -213,7 +209,6 @@
                             android:textColorHint="#BFCFD9"
                             android:textSize="13sp" />
 
-                        <!-- Возраст -->
                         <EditText
                             android:id="@+id/et_age"
                             android:layout_width="0dp"
@@ -239,12 +234,12 @@
                         android:textAllCaps="false"
                         android:textColor="#8A9BA8" />
 
-                    <!-- Расшифровка безопасных зон дефицита/профицита -->
+                    <!-- Расшифровка безопасных зон и ИНТЕРАКТИВНЫЙ ПОЛЗУНОК -->
                     <LinearLayout
                         android:id="@+id/ranges_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="16dp"
                         android:orientation="vertical"
                         android:visibility="gone"
                         tools:visibility="visible">
@@ -258,11 +253,34 @@
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
+                        <!-- Текстовый индикатор текущего выбора на ползунке -->
+                        <TextView
+                            android:id="@+id/tv_selected_target"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Выбранная цель: 1500 ккал"
+                            android:textColor="#8A9BA8"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <!-- Интерактивный ползунок для целей -->
+                        <SeekBar
+                            android:id="@+id/sb_calorie_target"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:maxHeight="4dp"
+                            android:minHeight="4dp"
+                            android:progressDrawable="@drawable/bg_progress_bar"
+                            android:thumb="@drawable/bg_selected_day"
+                            android:splitTrack="false" />
+
                         <TextView
                             android:id="@+id/tv_deficit_range"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="10dp"
                             android:text="Дефицит (похудение): 1100 - 1300 ккал"
                             android:textColor="#E57373"
                             android:textSize="12sp" />
@@ -304,7 +322,10 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/meals_recycler"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="150dp"
+                        android:scrollbars="vertical"
+                        android:fadeScrollbars="false"
+                        android:nestedScrollingEnabled="true"
                         tools:itemCount="3"
                         tools:listitem="@layout/item_meal" />
 
