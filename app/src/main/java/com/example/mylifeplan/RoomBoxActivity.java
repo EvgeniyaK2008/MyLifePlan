@@ -17,7 +17,7 @@ public class RoomBoxActivity extends AppCompatActivity {
 
     private TextView tvCoinsScore;
 
-    // Слои мебели и котенок в комнате
+    // Слои мебели и котенок
     private ImageView ivWindow, ivPainting, ivRug, ivDesk, ivRoomPet;
 
     // Кнопки магазина
