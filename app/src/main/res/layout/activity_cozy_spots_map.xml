@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CozySpotsMapActivity">
+
+    <!-- Бесплатная карта на весь экран -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/osm_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Кнопка "Назад" в чат -->
+    <ImageButton
+        android:id="@+id/btn_map_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_circle"
+        android:contentDescription="Back"
+        android:elevation="6dp"
+        android:src="@android:drawable/ic_menu_revert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

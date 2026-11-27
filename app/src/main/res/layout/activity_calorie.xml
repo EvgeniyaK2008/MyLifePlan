@@ -8,7 +8,7 @@
     android:background="@color/bg_white"
     tools:context=".CalorieActivity">
 
-    <!-- Верхняя панель навигации (Заголовок и Кнопка назад) -->
+    <!-- Верхняя панель навигации -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
             android:paddingHorizontal="20dp"
             android:paddingBottom="24dp">
 
-            <!-- Карта 1: Горизонтальный недельный календарь -->
+            <!-- Карта 1: Горизонтальный недельный календарь (Добавлены обязательные ID) -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,18 +81,20 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="7">
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mo" android:textColor="#8A9BA8" android:textSize="12sp"/><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="17" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/></LinearLayout>
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tu" android:textColor="#8A9BA8" android:textSize="12sp"/><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="18" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/></LinearLayout>
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="We" android:textColor="#8A9BA8" android:textSize="12sp"/><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="19" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/></LinearLayout>
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Th" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/><TextView android:layout_width="32dp" android:layout_height="32dp" android:text="20" android:textColor="#8A9BA8" android:textSize="14sp" android:textStyle="bold" android:gravity="center" android:background="@drawable/bg_selected_day" android:layout_marginTop="4dp"/></LinearLayout>
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fr" android:textColor="#8A9BA8" android:textSize="12sp"/><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="21" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/></LinearLayout>
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sa" android:textColor="#8A9BA8" android:textSize="12sp"/><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/></LinearLayout>
-                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Su" android:textColor="#8A9BA8" android:textSize="12sp"/><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23" android:textColor="#8A9BA8" android:textSize="14sp" android:layout_marginTop="4dp"/></LinearLayout>
+
+                        <LinearLayout android:id="@+id/day_mo" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mo" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_17" android:layout_width="26dp" android:layout_height="26dp" android:text="17" android:textColor="#8A9BA8" android:textSize="12sp" android:gravity="center" android:layout_marginTop="2dp"/></LinearLayout>
+                        <LinearLayout android:id="@+id/day_tu" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tu" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_18" android:layout_width="26dp" android:layout_height="26dp" android:text="18" android:textColor="#8A9BA8" android:textSize="12sp" android:gravity="center" android:layout_marginTop="2dp"/></LinearLayout>
+                        <LinearLayout android:id="@+id/day_we" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="We" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_19" android:layout_width="26dp" android:layout_height="26dp" android:text="19" android:textColor="#8A9BA8" android:textSize="12sp" android:gravity="center" android:layout_marginTop="2dp"/></LinearLayout>
+                        <LinearLayout android:id="@+id/day_th" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Th" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_20" android:layout_width="26dp" android:layout_height="26dp" android:text="20" android:textColor="#8A9BA8" android:textSize="12sp" android:gravity="center" android:layout_marginTop="2dp"/></LinearLayout>
+                        <LinearLayout android:id="@+id/day_fr" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fr" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_21" android:layout_width="26dp" android:layout_height="26dp" android:text="21" android:textColor="#8A9BA8" android:textSize="12sp" android:gravity="center" android:layout_marginTop="2dp"/></LinearLayout>
+                        <LinearLayout android:id="@+id/day_sa" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sa" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_22" android:layout_width="26dp" android:layout_height="26dp" android:text="22" android:textColor="#8A9BA8" android:textSize="12sp" android:gravity="center" android:layout_marginTop="2dp"/></LinearLayout>
+                        <LinearLayout android:id="@+id/day_su" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Su" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_23" android:layout_width="26dp" android:layout_height="26dp" android:text="23" android:textColor="#8A9BA8" android:textSize="12sp" android:gravity="center" android:layout_marginTop="2dp"/></LinearLayout>
+
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>
 
-            <!-- Карта 2: Круговой счетчик калорий -->
+            <!-- Карта 2: Круговой счетчик калорий и БЖУ -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,57 +102,107 @@
                 android:background="@drawable/bg_grid_card"
                 android:padding="20dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <ProgressBar
-                        android:id="@+id/calorie_progress_bar"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:max="1500"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/bg_circular_progress"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <!-- Контейнер кругового прогресс-бара -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
+                        <ProgressBar
+                            android:id="@+id/calorie_progress_bar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:max="1500"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/bg_circular_progress"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="@id/calorie_progress_bar"
+                            app:layout_constraintEnd_toEndOf="@id/calorie_progress_bar"
+                            app:layout_constraintStart_toStartOf="@id/calorie_progress_bar"
+                            app:layout_constraintTop_toTopOf="@id/calorie_progress_bar">
+
+                            <TextView
+                                android:id="@+id/tv_current_calories"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="26sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="1.5dp"
+                                android:layout_marginVertical="4dp"
+                                android:background="#BFCFD9" />
+
+                            <TextView
+                                android:id="@+id/tv_target_calories"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1500"
+                                android:textColor="#BFCFD9"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- НОВЫЙ БЛОК: Изящное отображение КБЖУ под кругом [1] -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="@id/calorie_progress_bar"
-                        app:layout_constraintEnd_toEndOf="@id/calorie_progress_bar"
-                        app:layout_constraintStart_toStartOf="@id/calorie_progress_bar"
-                        app:layout_constraintTop_toTopOf="@id/calorie_progress_bar">
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
 
+                        <!-- Белки -->
                         <TextView
-                            android:id="@+id/tv_current_calories"
+                            android:id="@+id/tv_macros_protein"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
+                            android:text="P: 0/112g"
                             android:textColor="#FFFFFF"
-                            android:textSize="26sp"
+                            android:textSize="13sp"
                             android:textStyle="bold" />
 
-                        <View
-                            android:layout_width="40dp"
-                            android:layout_height="1.5dp"
-                            android:layout_marginVertical="4dp"
-                            android:background="#BFCFD9" />
-
+                        <!-- Жиры -->
                         <TextView
-                            android:id="@+id/tv_target_calories"
+                            android:id="@+id/tv_macros_fat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1500"
-                            android:textColor="#BFCFD9"
-                            android:textSize="15sp" />
+                            android:layout_marginStart="14dp"
+                            android:text="F: 0/50g"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <!-- Углеводы -->
+                        <TextView
+                            android:id="@+id/tv_macros_carbs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:text="C: 0/150g"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
             </FrameLayout>
 
             <!-- Карта 3: Поля ввода параметров и Слайдер целей -->
@@ -234,7 +286,7 @@
                         android:textAllCaps="false"
                         android:textColor="#8A9BA8" />
 
-                    <!-- Расшифровка безопасных зон и ИНТЕРАКТИВНЫЙ ПОЛЗУНОК -->
+                    <!-- Расшифровка безопасных зон и Слайдер -->
                     <LinearLayout
                         android:id="@+id/ranges_layout"
                         android:layout_width="match_parent"
@@ -253,7 +305,6 @@
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
-                        <!-- Текстовый индикатор текущего выбора на ползунке -->
                         <TextView
                             android:id="@+id/tv_selected_target"
                             android:layout_width="wrap_content"
@@ -264,7 +315,6 @@
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
-                        <!-- Интерактивный ползунок для целей -->
                         <SeekBar
                             android:id="@+id/sb_calorie_target"
                             android:layout_width="match_parent"

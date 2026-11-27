@@ -9,104 +9,148 @@
     android:padding="20dp"
     tools:context=".MainActivity">
 
-    <!-- Кнопка профиля (аватарка в зеркальной раме) -->
+    <!-- Кнопка профиля (аватарка без овального фона) -->
     <ImageButton
         android:id="@+id/btn_profile"
         android:layout_width="68dp"
         android:layout_height="87dp"
-        android:background="@drawable/bg_circle"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/desc_profile_avatar"
-        android:padding="10dp"
+        android:padding="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/profile_universal"
+        android:src="@drawable/generated_image_august_07__2026___10_37am_removebg_preview_removebg_preview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Заголовок (центрирован по вертикали относительно аватарки) -->
-
-    <!-- Линия под заголовком "Welcome home" -->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/welcome_home"
-        android:textColor="#9BB0C1"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@id/btn_profile"
-        app:layout_constraintStart_toEndOf="@id/btn_profile"
-        app:layout_constraintTop_toTopOf="@id/btn_profile"
-        app:layout_constraintVertical_bias="0.187" />
-
-    <View
-        android:id="@+id/title_underline"
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        android:layout_marginTop="2dp"
-        android:background="#D1DCE8"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintStart_toStartOf="@id/title"
-        app:layout_constraintEnd_toEndOf="@id/title" />
-
-    <!-- Иконка меню (выровнена по линии заголовка) -->
+    <!-- Иконка меню (справа) -->
     <ImageView
         android:id="@+id/menu_icon"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:contentDescription="@string/desc_menu"
         android:src="@drawable/ic_menu"
-        app:layout_constraintBottom_toBottomOf="@id/title"
+        app:layout_constraintBottom_toBottomOf="@id/btn_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/title" />
+        app:layout_constraintTop_toTopOf="@id/btn_profile" />
 
-    <!-- Вертикальный контейнер игровой валюты (Звезда вверху, счет внизу) -->
+    <!-- Контейнер звездного баланса -->
     <LinearLayout
         android:id="@+id/coins_container"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_marginEnd="12dp"
+        android:background="@drawable/bg_pill"
         android:gravity="center"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
         app:layout_constraintBottom_toBottomOf="@id/menu_icon"
         app:layout_constraintEnd_toStartOf="@id/menu_icon"
         app:layout_constraintTop_toTopOf="@id/menu_icon">
 
-        <!-- Иконка звездочки (прозрачный фон) -->
         <ImageView
             android:id="@+id/iv_star_currency"
-            android:layout_width="44dp"
-            android:layout_height="40dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/star_coin_ico" />
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/star_ico" />
 
-        <!-- Небольшая надпись счета под ней -->
         <TextView
             android:id="@+id/tv_main_coins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:text="0.00"
             android:textColor="#8A9BA8"
-            android:textSize="11sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Карточка Plans (размер блока 353dp сохранен) -->
+    <!-- ЛЕНТА КАЛЕНДАРЯ -->
+    <FrameLayout
+        android:id="@+id/home_calendar_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_home_card"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_profile">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Название месяца и переключение недель -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/tv_calendar_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="July 2026"
+                    android:textColor="#8A9BA8"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btn_prev_week"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Previous week"
+                    android:src="@android:drawable/ic_media_previous" />
+
+                <ImageButton
+                    android:id="@+id/btn_next_week"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Next week"
+                    android:src="@android:drawable/ic_media_next" />
+            </RelativeLayout>
+
+            <!-- 7 дней недели -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <LinearLayout android:id="@+id/day_mo" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:clickable="true" android:focusable="true" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mo" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_17" android:layout_width="26dp" android:layout_height="26dp" android:layout_marginTop="2dp" android:gravity="center" android:text="17" android:textColor="#8A9BA8" android:textSize="12sp"/></LinearLayout>
+                <LinearLayout android:id="@+id/day_tu" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:clickable="true" android:focusable="true" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tu" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_18" android:layout_width="26dp" android:layout_height="26dp" android:layout_marginTop="2dp" android:gravity="center" android:text="18" android:textColor="#8A9BA8" android:textSize="12sp"/></LinearLayout>
+                <LinearLayout android:id="@+id/day_we" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:clickable="true" android:focusable="true" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="We" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_19" android:layout_width="26dp" android:layout_height="26dp" android:layout_marginTop="2dp" android:gravity="center" android:text="19" android:textColor="#8A9BA8" android:textSize="12sp"/></LinearLayout>
+                <LinearLayout android:id="@+id/day_th" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:clickable="true" android:focusable="true" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Th" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_20" android:layout_width="26dp" android:layout_height="26dp" android:layout_marginTop="2dp" android:gravity="center" android:text="20" android:textColor="#8A9BA8" android:textSize="12sp"/></LinearLayout>
+                <LinearLayout android:id="@+id/day_fr" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:clickable="true" android:focusable="true" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fr" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_21" android:layout_width="26dp" android:layout_height="26dp" android:layout_marginTop="2dp" android:gravity="center" android:text="21" android:textColor="#8A9BA8" android:textSize="12sp"/></LinearLayout>
+                <LinearLayout android:id="@+id/day_sa" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:clickable="true" android:focusable="true" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sa" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_22" android:layout_width="26dp" android:layout_height="26dp" android:layout_marginTop="2dp" android:gravity="center" android:text="22" android:textColor="#8A9BA8" android:textSize="12sp"/></LinearLayout>
+                <LinearLayout android:id="@+id/day_su" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:clickable="true" android:focusable="true" android:gravity="center" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Su" android:textColor="#8A9BA8" android:textSize="11sp"/><TextView android:id="@+id/tv_day_23" android:layout_width="26dp" android:layout_height="26dp" android:layout_marginTop="2dp" android:gravity="center" android:text="23" android:textColor="#8A9BA8" android:textSize="12sp"/></LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- ЛЕВАЯ КОЛОНКА: Расписание чистым текстом (БЕЗ кнопки добавить и БЕЗ вылетов) -->
     <FrameLayout
         android:id="@+id/plans_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/bg_home_card"
         app:layout_constraintEnd_toStartOf="@id/motivation_card"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_profile"
+        app:layout_constraintTop_toBottomOf="@id/home_calendar_card"
         app:layout_constraintWidth_percent="0.55">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="353dp"
+            android:layout_height="300dp"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -116,121 +160,117 @@
                 android:layout_marginBottom="12dp"
                 android:text="@string/plans_title"
                 android:textColor="#8A9BA8"
-                android:textSize="18sp" />
-
-            <!-- Список планов (высота 0dp и вес 1 позволяют кнопке "+ add" всегда оставаться внизу) -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/plans_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:scrollbars="vertical"
-                android:fadeScrollbars="false"
-                android:nestedScrollingEnabled="true"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_plan" />
-
-            <!-- Кнопка добавить всегда зафиксирована внизу карточки -->
-            <TextView
-                android:id="@+id/add_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="12dp"
-                android:padding="4dp"
-                android:text="@string/add_btn_text"
-                android:textColor="#9BB0C1"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-    </FrameLayout>
-
-    <!-- Карточка Мотивации (Высота ровно 155dp, как в исходном шаблоне) -->
-    <FrameLayout
-        android:id="@+id/motivation_card"
-        android:layout_width="0dp"
-        android:layout_height="155dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/bg_home_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/plans_card"
-        app:layout_constraintTop_toBottomOf="@id/btn_profile">
-
-        <!-- Квадратная картинка с вашей мотивацией -->
-        <ImageView
-            android:id="@+id/iv_motivation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/motivation" /> <!-- Замените на вашу картинку -->
-    </FrameLayout>
-
-    <!-- Карточка Питомца (Высота ровно 186dp, встает на место пустой карточки) -->
-    <FrameLayout
-        android:id="@+id/pet_card"
-        android:layout_width="0dp"
-        android:layout_height="186dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/bg_home_card"
-        app:layout_constraintEnd_toEndOf="@id/motivation_card"
-        app:layout_constraintStart_toStartOf="@id/motivation_card"
-        app:layout_constraintTop_toBottomOf="@id/motivation_card">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="12dp">
-
-            <!-- Картинка котенка (с прозрачным фоном) -->
-            <ImageView
-                android:id="@+id/iv_pet"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/cat_sleep" /> <!-- Спящий котенок -->
-
-            <!-- Статус питомца -->
-            <TextView
-                android:id="@+id/tv_pet_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="Котёнок спит... 💤"
-                android:textColor="#8A9BA8"
-                android:textSize="11sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Кнопка покормить за монеты -->
-            <TextView
-                android:id="@+id/btn_feed_pet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_pill"
-                android:paddingHorizontal="14dp"
-                android:paddingVertical="5dp"
-                android:text="Покормить (10 ⭐)"
-                android:textColor="#9BB0C1"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:clickable="true"
-                android:focusable="true" />
+            <!-- Прокручиваемый чистый текст расписания с красивыми отступами строк -->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fadeScrollbars="false"
+                android:scrollbars="vertical">
+
+                <TextView
+                    android:id="@+id/tv_plans_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8dp"
+                    android:text="07:00  •  Wake up\n07:05  •  Workout\n07:15  •  Breakfast"
+                    android:textColor="#7A8B99"
+                    android:textSize="14sp" />
+            </ScrollView>
+
         </LinearLayout>
     </FrameLayout>
 
-    <!-- Барьер для определения нижней границы (теперь ссылается на plans_card и pet_card) -->
+    <!-- ПРАВАЯ КОЛОНКА: Питомец и Мотивация -->
+    <LinearLayout
+        android:id="@+id/motivation_card"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/plans_card"
+        app:layout_constraintTop_toBottomOf="@id/home_calendar_card">
+
+        <!-- Верхняя половина: Мотивация -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_home_card">
+
+            <ImageView
+                android:id="@+id/iv_motivation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/motivation" />
+        </FrameLayout>
+
+        <!-- Нижняя половина: Домик питомца -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_home_card">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_pet"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cat_sleep" />
+
+                <TextView
+                    android:id="@+id/tv_pet_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Kitten is hungry... 💤"
+                    android:textColor="#8A9BA8"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_feed_pet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_pill"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="Feed (1 ⭐)"
+                    android:textColor="#9BB0C1"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Барьер для определения нижней границы колонок -->
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/columns_barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="plans_card,pet_card" />
+        app:constraint_referenced_ids="plans_card,motivation_card" />
 
-
-    <!-- Большая нижняя карточка с сеткой навигации (Зафиксирована по высоте и прижата к низу) -->
+    <!-- Большая нижняя карточка с сеткой навигации 2х2 -->
     <FrameLayout
         android:id="@+id/grid_card"
         android:layout_width="0dp"
@@ -241,147 +281,84 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/columns_barrier"
-        app:layout_constraintVertical_bias="1.0"> <!-- Прижимает панель строго к низу экрана на длинных дисплеях -->
+        app:layout_constraintVertical_bias="1.0">
 
-    <!-- Высоту GridLayout оставляем фиксированной 193dp, чтобы кнопки сохраняли свои пропорции -->
-    <GridLayout
-        android:id="@+id/apps_grid"
-        android:layout_width="match_parent"
-        android:layout_height="193dp"
-        android:alignmentMode="alignMargins"
-        android:columnCount="4"
-        android:padding="16dp"
-        android:rowCount="3">
+        <GridLayout
+            android:id="@+id/apps_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:padding="16dp">
 
-        <!-- Кнопки-плитки (btn_section_1 ... btn_section_8) остаются без изменений -->
-        <ImageButton
-            android:id="@+id/btn_section_1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_grid_square"
-            android:contentDescription="@string/desc_grid_button"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/study_ico" />
+            <ImageButton
+                android:id="@+id/btn_section_1"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_grid_square"
+                android:contentDescription="@string/desc_grid_button"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/study_ico" />
 
-        <ImageButton
-            android:id="@+id/btn_section_2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_grid_square"
-            android:contentDescription="@string/desc_grid_button"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/diet_ico" />
+            <ImageButton
+                android:id="@+id/btn_section_2"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_grid_square"
+                android:contentDescription="@string/desc_grid_button"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/diet_ico" />
 
-        <ImageButton
-            android:id="@+id/btn_section_3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_grid_square"
-            android:contentDescription="@string/desc_grid_button"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/games_ico" />
+            <ImageButton
+                android:id="@+id/btn_section_3"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_grid_square"
+                android:contentDescription="@string/desc_grid_button"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/games_ico" />
 
-        <ImageButton
-            android:id="@+id/btn_section_4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_grid_square"
-            android:contentDescription="@string/desc_grid_button"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/calendar_ico" />
+            <ImageButton
+                android:id="@+id/btn_section_4"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_grid_square"
+                android:contentDescription="@string/desc_grid_button"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/statistics_ico" />
 
-        <ImageButton
-            android:id="@+id/btn_section_5"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_grid_square"
-            android:contentDescription="@string/desc_grid_button"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/sounds_ico" />
+        </GridLayout>
+    </FrameLayout>
 
-        <ImageButton
-            android:id="@+id/btn_section_6"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_grid_square"
-            android:contentDescription="@string/desc_grid_button"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/statistics_ico" />
-
-        <ImageButton
-            android:id="@+id/btn_section_7"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_grid_square"
-            android:contentDescription="@string/desc_grid_button"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/dairy_ico" />
-
-        <ImageButton
-            android:id="@+id/btn_section_8"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_grid_square"
-            android:contentDescription="@string/desc_grid_button"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/sport_ico" />
-
-    </GridLayout>
-</FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

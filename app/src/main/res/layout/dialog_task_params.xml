@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_home_card"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task Parameters"
+        android:textColor="#3D4A54"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_button_white"
+        android:hint="Goal / Task Title"
+        android:paddingHorizontal="12dp"
+        android:textColor="#3D4A54"
+        android:textColorHint="#BFCFD9"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/et_dialog_notes"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_button_white"
+        android:gravity="top|start"
+        android:hint="Notes, links or steps..."
+        android:padding="10dp"
+        android:textColor="#3D4A54"
+        android:textColorHint="#BFCFD9"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_pick_deadline"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_white"
+            android:text="Pick Deadline"
+            android:textAllCaps="false"
+            android:textColor="#3D4A54"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn_pick_daily_target"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_white"
+            android:text="Target: 60 min"
+            android:textAllCaps="false"
+            android:textColor="#3D4A54"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Tap day to set reminder time (green = active):"
+        android:textColor="#8A9BA8"
+        android:textSize="12sp" />
+
+    <!-- Кнопки дней недели -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button android:id="@+id/btn_day_mon" android:layout_width="44dp" android:layout_height="44dp" android:text="Mo" android:textSize="11sp" android:background="@drawable/bg_button_white" android:textColor="#3D4A54" />
+        <Button android:id="@+id/btn_day_tue" android:layout_width="44dp" android:layout_height="44dp" android:layout_marginStart="3dp" android:text="Tu" android:textSize="11sp" android:background="@drawable/bg_button_white" android:textColor="#3D4A54" />
+        <Button android:id="@+id/btn_day_wed" android:layout_width="44dp" android:layout_height="44dp" android:layout_marginStart="3dp" android:text="We" android:textSize="11sp" android:background="@drawable/bg_button_white" android:textColor="#3D4A54" />
+        <Button android:id="@+id/btn_day_thu" android:layout_width="44dp" android:layout_height="44dp" android:layout_marginStart="3dp" android:text="Th" android:textSize="11sp" android:background="@drawable/bg_button_white" android:textColor="#3D4A54" />
+        <Button android:id="@+id/btn_day_fri" android:layout_width="44dp" android:layout_height="44dp" android:layout_marginStart="3dp" android:text="Fr" android:textSize="11sp" android:background="@drawable/bg_button_white" android:textColor="#3D4A54" />
+        <Button android:id="@+id/btn_day_sat" android:layout_width="44dp" android:layout_height="44dp" android:layout_marginStart="3dp" android:text="Sa" android:textSize="11sp" android:background="@drawable/bg_button_white" android:textColor="#3D4A54" />
+        <Button android:id="@+id/btn_day_sun" android:layout_width="44dp" android:layout_height="44dp" android:layout_marginStart="3dp" android:text="Su" android:textSize="11sp" android:background="@drawable/bg_button_white" android:textColor="#3D4A54" />
+    </LinearLayout>
+
+    <!-- Та самая галочка со звуком -->
+    <CheckBox
+        android:id="@+id/cb_sound_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Sound alert on reminders &amp; finish"
+        android:textColor="#3D4A54"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/btn_save_params"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#9BB0C1"
+        android:text="Save Goal"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

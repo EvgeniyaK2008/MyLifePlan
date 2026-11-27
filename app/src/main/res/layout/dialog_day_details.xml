@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_home_card"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- Дата и день недели -->
+    <TextView
+        android:id="@+id/tv_day_details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday, 19 October"
+        android:textColor="#3D4A54"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Суммарный прогресс времени за этот день -->
+    <TextView
+        android:id="@+id/tv_day_details_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="#E1ECF4"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="4dp"
+        android:text="⏱ Выполнено: 45 мин / 120 мин нормы"
+        android:textColor="#426B8A"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Расписание и дела на этот день:"
+        android:textColor="#8A9BA8"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <!-- Список дел на этот день -->
+    <LinearLayout
+        android:id="@+id/container_day_tasks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical" />
+
+    <!-- Кнопка закрытия -->
+    <Button
+        android:id="@+id/btn_close_day_details"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="18dp"
+        android:backgroundTint="#9BB0C1"
+        android:text="Понятно, котик 🐾"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

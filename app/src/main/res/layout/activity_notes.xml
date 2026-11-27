@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="34dp"
+        android:layout_height="326dp"
+        android:layout_marginTop="108dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <CheckBox
+            android:id="@+id/checkBox25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="144dp"
+        android:layout_height="327dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="107dp">
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView2"
+            android:layout_width="match_parent"
+            android:layout_height="31dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView3"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView4"
+            android:layout_width="match_parent"
+            android:layout_height="34dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView5"
+            android:layout_width="match_parent"
+            android:layout_height="27dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView6"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView7"
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView8"
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView9"
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView10"
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="132dp"
+        android:layout_height="139dp"
+        tools:layout_editor_absoluteX="228dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="343dp"
+        android:layout_height="254dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="459dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

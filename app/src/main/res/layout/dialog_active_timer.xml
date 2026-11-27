@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_home_card"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tv_timer_task_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Algorithms Practice"
+        android:textColor="#3D4A54"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Крупное отображение времени -->
+    <TextView
+        android:id="@+id/tv_modal_timer_digits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="29:59"
+        android:textColor="#9BB0C1"
+        android:textSize="54sp"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/pb_modal_timer"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:progressDrawable="@drawable/bg_progress_bar" />
+
+    <!-- Кнопки управления: Пауза, Досрочно завершить, Закрыть -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Кнопка Пауза / Старт -->
+        <Button
+            android:id="@+id/btn_timer_pause_resume"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:backgroundTint="#9BB0C1"
+            android:text="Pause"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+
+        <!-- Кнопка Досрочно завершить -->
+        <Button
+            android:id="@+id/btn_timer_finish_early"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#E1ECF4"
+            android:text="Finish"
+            android:textAllCaps="false"
+            android:textColor="#426B8A" />
+
+        <!-- Кнопка Сброс / Отмена -->
+        <Button
+            android:id="@+id/btn_timer_cancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#F8EAEB"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="#BA5A63" />
+    </LinearLayout>
+</LinearLayout>
